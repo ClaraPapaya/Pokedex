@@ -1,0 +1,29 @@
+/* Variables color */
+
+:root {
+  --backgroundColor: #96bb7c;
+  --primaryColor: #184d47;
+}
+
+/* Variables font */
+:root {
+  --fontText: 'Nunito', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  background-color: var(--backgroundColor);
+  font-family: var(--fontText);
+  color: var(--primaryColor);
+  font-size: 20px;
+  text-align: center;
+  margin: 20px 40px 20px 40px;
+}
