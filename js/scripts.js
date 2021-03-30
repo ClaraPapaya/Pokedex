@@ -1,10 +1,23 @@
-let pokemonList = [
-  {name:'Pidgeot', height: 1.5, types: ['flying', 'normal']},
-  {name:'Butterfree', height: 1.1, types: ['bug','flying']},
-  {name:'Parasect', height: 1, types: ['grass','bug']}
-];
+let pokemonRepository = (function() {
+  let pokemonList = [
+    {name:'Pidgeot', height: 1.5, types: ['flying', 'normal']},
+    {name:'Butterfree', height: 1.1, types: ['bug','flying']},
+    {name:'Parasect', height: 1, types: ['grass','bug']}
+  ]
+  function getAll() {
+    return pokemonList;
+  }
+  function add(pokemons) {
+    pokemonList.push(pokemons)
+  }
+  return {
+    getAll: getAll,
+    add: add
+  };
+});
 
-// Task 1.5 Use a forEach() function instead of the for loop you have to iterate over the Pokémon in your pokemonList array in order to print the details of each one. 
+//Task1.5 Part 2, step 5: get access to pokemonList again:
+
 pokemonList.forEach(function(pokemons) {
 
   if (pokemons.height >= 1.5) {
