@@ -14,11 +14,9 @@ let pokemonRepository = (function() {
     getAll: getAll,
     add: add
   };
-});
+}());
 
-//Task1.5 Part 2, step 5: get access to pokemonList again:
-
-pokemonList.forEach(function(pokemons) {
+(pokemonRepository.getAll()).forEach(function(pokemons) {
 
   if (pokemons.height >= 1.5) {
  document.write(`<p> ${pokemons.name} (${pokemons.height}) - Wow that's big! <br>`);
