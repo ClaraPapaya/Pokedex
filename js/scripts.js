@@ -8,7 +8,9 @@ let pokemonRepository = (function() {
     return pokemonList;
   }
   function add(pokemons) {
-    pokemonList.push(pokemons)
+    if (typeof pokemons === 'object' && object.keys(pokemonList)) {
+      pokemonList.push(pokemons)
+    }
   }
   return {
     getAll: getAll,
