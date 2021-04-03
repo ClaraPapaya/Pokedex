@@ -3,6 +3,8 @@
 :root {
   --backgroundColor: #96bb7c;
   --primaryColor: #184d47;
+  --tertiaryColor: #d6efc7;
+  --fourthColor: #fad586;
 }
 
 /* Variables font */
@@ -25,5 +27,46 @@ body {
   color: var(--primaryColor);
   font-size: 20px;
   text-align: center;
-  margin: 20px 40px 20px 40px;
+  margin: 0px;
+  position: relative;
+}
+
+ul {
+  background-color: var(--tertiaryColor);
+  list-style-type: none;
+  border: 5px solid var(--primaryColor);
+  padding-inline-start: 0px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.button-class {
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primaryColor);
+  color: var(--fourthColor);
+  padding: 10px;
+
+}
+
+@media all and (max-width: 500px) {
+  body {
+    font-size: 18px;
+  }
+
+/* just ideas, maybe not useful 
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  li {
+    flex-shrink: 1;
+  }
+*/
 }
