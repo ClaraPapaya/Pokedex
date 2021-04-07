@@ -6,9 +6,9 @@ let pokemonRepository = (function() {
     return pokemonList;
   }
   function add(pokemons) {
-    if (typeof pokemons === 'object' && object.keys(pokemonList)) {
+    if (typeof pokemons === 'object' && 'name' in pokemons) {
       pokemonList.push(pokemons)
-    }
+    } else {'Not the right Pokémon!'}
   }
 
   function addListItem(pokemon) {
