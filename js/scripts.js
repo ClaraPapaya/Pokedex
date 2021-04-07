@@ -18,27 +18,23 @@ let pokemonRepository = (function() {
   //creates an unordered list and buttons in the DOM for each Pokémon
   function addListItem(pokemon) {
     let pokemonListUl = document.querySelector('.pokemon-list');
-    //creats the list
+    //creates the list
     let listItem = document.createElement('li');
     //creates the button
     let button = document.createElement('button');
     button.innerText = pokemon.name;
     button.classList.add('button-class');
     button.addEventListener('click', function(event) {
-      showDetails(pokemon.name);
+      showDetails(pokemon);
     });
     //adds them to the DOM
     listItem.appendChild(button);
     pokemonListUl.appendChild(listItem);
   }
-  //shows the Pokémon details like type, height, etc. fetched from the details url of the API
-  function showDetails(pokemon) {
-    loadDetails(pokemon).then(function () {
-      console.log(pokemon);
-    });
-  }
+
   //loads the list of Pokémons from the API
   function loadList() {
+    showLoadingMessage();
     return fetch(apiUrl).then(function(response) {
       return response.json();
     }).then(function(json) {
@@ -47,14 +43,18 @@ let pokemonRepository = (function() {
           name: item.name,
           detailsUrl: item.url
         };
-        add(pokemons);
+      add(pokemons);
       });
+    }).then(function(){
+      hideLoadingMessage();
     }).catch(function(e) {
       console.error(e);
     })
+    hideLoadingMessage();
   }
   //loads the details of the Pokémons from the API
   function loadDetails(item) {
+    showLoadingMessage();
     let url = item.detailsUrl;
     return fetch(url).then(function (response) {
       return response.json();
@@ -62,23 +62,55 @@ let pokemonRepository = (function() {
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
-    }).catch(function (e) {
+    }).then(function() {
+      hideLoadingMessage();
+    }).catch(function(e) {
       console.error(e);
     });
+    hideLoadingMessage();
   }
+
+  //shows the Pokémon details like type, height, etc. fetched from the details url of the API
+  function showDetails(pokemon) {
+    pokemonRepository.loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
+  }
+
+  //shows the loading image
+  function showLoadingMessage() {
+    loadImage = document.querySelector(".loadingImage");
+    loadImage.classList.add("show");
+  }
+
+  //hides the loading image
+  function hideLoadingMessage() {
+    loadImage = document.querySelector(".loadingImage");
+    loadImage.classList.remove("show");
+  }
+
   //key values to use the locla variables outside of the IIEF function
   return {
     getAll: getAll,
     add: add,
     addListItem: addListItem,
     loadList: loadList,
-    loadDetails: loadDetails
+    loadDetails: loadDetails,
+    showDetails: showDetails,
+    showLoadingMessage: showLoadingMessage,
+    hideLoadingMessage: hideLoadingMessage
   };
 }());
 
 //calls and executes the pokemonRepository
 pokemonRepository.loadList().then(function() {
-  (pokemonRepository.getAll()).forEach(function(pokemons) {
-    pokemonRepository.addListItem(pokemons);
-  });
+  //shows loading image in browser
+  pokemonRepository.showLoadingMessage();
+  //timer to simulate the time it takes to load
+  setTimeout(function() {
+    pokemonRepository.getAll().forEach(function(pokemons) {
+      pokemonRepository.addListItem(pokemons);
+    })
+    pokemonRepository.hideLoadingMessage();
+  }, 1000)
 });
