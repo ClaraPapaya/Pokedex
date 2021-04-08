@@ -34,15 +34,16 @@ body {
 ul {
   background-color: var(--tertiaryColor);
   list-style-type: none;
+  columns: 3;
   border: 5px solid var(--primaryColor);
   padding-inline-start: 0px;
+  padding-block: 20px;
   width: 40%;
   margin: 0 auto;
 }
 
 li {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 .button-class {
@@ -54,12 +55,25 @@ li {
 
 }
 
+.loadingImage{
+  display: none;
+  margin: 150px;
+  align-self: center;
+  box-sizing: border-box;
+  opacity: 0.5;
+}
+.show{
+  display: block;
+  margin-left: 32%;
+  margin-top: 5%;
+}
+
 @media all and (max-width: 500px) {
   body {
     font-size: 18px;
   }
 
-/* just ideas, maybe not useful 
+/* just ideas, maybe not useful
   ul {
     display: flex;
     flex-direction: column;
