@@ -107,7 +107,6 @@ li {
   border: 0;
   background: none;
   color: var(--primaryColor);
-  text-decoration: underline;
 }
 
 .modal h1 {

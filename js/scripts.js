@@ -101,7 +101,7 @@ let pokemonRepository = (function() {
     // adds the modal content
     let closeButtonElement = document.createElement('button');
     closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'X';
+    closeButtonElement.innerText = 'x';
     //to make use of the hideModal function
     closeButtonElement.addEventListener('click', hideModal);
     // creates elements to display the pokemon details in the modal
