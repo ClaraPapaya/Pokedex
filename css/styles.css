@@ -12,10 +12,6 @@
   --fontText: 'Nunito', sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 html {
   min-height: 100%;
   position: relative;
