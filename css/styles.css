@@ -27,6 +27,16 @@ body {
   position: relative;
 }
 
+.page-container {
+  margin-top: 60px;
+}
+
+a {
+  color: var(--primaryColor);
+  font-size: 20px;
+  font-weight: 700;
+}
+
 ul {
   background-color: var(--tertiaryColor);
   list-style-type: none;
@@ -42,13 +52,17 @@ li {
   margin-top: 10px;
 }
 
-.button-class {
+.btn {
   border: none;
   border-radius: 10px;
   background-color: var(--primaryColor);
   color: var(--fourthColor);
   padding: 10px;
+}
 
+.btn:hover {
+  color: var(--fourthColor);
+  opacity: 0.8;
 }
 
 .loadingImage{
