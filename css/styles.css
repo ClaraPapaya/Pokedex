@@ -65,14 +65,14 @@ li {
   opacity: 0.8;
 }
 
-.loadingImage{
+.loadingImage {
   display: none;
   margin: 150px;
   align-self: center;
   box-sizing: border-box;
   opacity: 0.5;
 }
-.show{
+.showImg {
   display: block;
   margin-left: 32%;
   margin-top: 5%;

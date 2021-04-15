@@ -79,13 +79,13 @@ let pokemonRepository = (function() {
   //shows the loading image
   function showLoadingMessage() {
     loadImage = document.querySelector(".loadingImage");
-    loadImage.classList.add("show");
+    loadImage.classList.add("showImg");
   }
 
   //hides the loading image
   function hideLoadingMessage() {
     loadImage = document.querySelector(".loadingImage");
-    loadImage.classList.remove("show");
+    loadImage.classList.remove("showImg");
   }
 
   //shows the Pokémon details like type, height, etc. fetched from the details url of the API
