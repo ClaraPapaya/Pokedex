@@ -76,13 +76,6 @@ let pokemonRepository = (function() {
     hideLoadingMessage();
   }
 
-  //shows the Pokémon details like type, height, etc. fetched from the details url of the API
-  function showDetails(pokemon) {
-      loadDetails(pokemon).then(function () {
-      showModal(pokemon);
-      })
-    };
-
   //shows the loading image
   function showLoadingMessage() {
     loadImage = document.querySelector(".loadingImage");
@@ -94,6 +87,13 @@ let pokemonRepository = (function() {
     loadImage = document.querySelector(".loadingImage");
     loadImage.classList.remove("show");
   }
+
+  //shows the Pokémon details like type, height, etc. fetched from the details url of the API
+  function showDetails(pokemon) {
+      loadDetails(pokemon).then(function () {
+      showModal(pokemon);
+      })
+    };
 
   //modal that shows the Pokemon listItems details
   function showModal (pokemons) {
