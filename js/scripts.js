@@ -96,23 +96,23 @@ let pokemonRepository = (function() {
     };
 
   //modal that shows the Pokemon listItems details
-  function showModal (pokemons) {
+  function showModal (pokemon) {
 
     // adds the modal content
-    let modalTitle = document.getElementById('modalTitle');
-    modalTitle.innerText = pokemons.name;
+      let modalTitle = document.getElementById("modalTitle");
+        modalTitle.innerText = pokemon.name;
 
-    let heightDetail = document.getElementById('#heightDetail');
-    heightDetail.innerText = 'height: ' + pokemons.height;
-    heightDetail.classList.add("modal-body");
+      let pokemonHeight = document.getElementById("heightDetail");
+        pokemonHeight.innerText = "Height: " + pokemon.height;
+        pokemonHeight.classList.add("modal-body");
 
-    let typeDetail = document.getElementById('#typeDetail');
-    typeDetail.innerText = 'type: ' + pokemons.types;
-    typeDetail.classList.add("modal-body");
+      let pokemonType = document.getElementById("typeDetail");
+        pokemonType.innerText = "Type: " + pokemon.types;
+        pokemonType.classList.add("modal-body");
 
-    let imgDetail = document.getElementById('#imgDetail');
-    imgDetail.src = pokemons.imageUrl;
-
+      let modalImage = document.getElementById("imgDetail");
+        modalImage.src = pokemon.imageUrl;
+        modalImage.classList.add("pokemonImage");
   }
 
   // needed to close the modal
