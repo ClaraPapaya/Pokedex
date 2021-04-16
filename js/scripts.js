@@ -96,9 +96,9 @@ let pokemonRepository = (function() {
     };
 
   //modal that shows the Pokemon listItems details
-  function showModal (pokemon) {
+  function showModal(pokemon) {
 
-    // adds the modal content
+    //adds the modal content details to modal header and body
     let modalTitle = document.getElementById("modalTitle");
     modalTitle.innerText = pokemon.name;
 
@@ -114,8 +114,8 @@ let pokemonRepository = (function() {
     modalImage.src = pokemon.imageUrl;
   }
 
-  // needed to close the modal
-  function hideModal () {
+  //needed to close the modal
+  function hideModal() {
     modalContainer.classList.remove('is-visible');
   }
 
@@ -134,7 +134,7 @@ let pokemonRepository = (function() {
     }
   });
 
-  //key values to use the locla variables outside of the IIEF function
+  //key values to use the local variables outside of the IIEF function
   return {
     getAll: getAll,
     add: add,
