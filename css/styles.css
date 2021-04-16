@@ -82,13 +82,3 @@ li {
   background: var(--fourthColor);
   border: 2px solid var(--primaryColor);
 }
-
-@media all and (max-width: 500px) {
-  body {
-    font-size: 18px;
-  }
-
-  ul {
-    columns: 2;
-  }
-}
