@@ -21,14 +21,10 @@ body {
   background-color: var(--backgroundColor);
   font-family: var(--fontText);
   color: var(--primaryColor);
-  font-size: 20px;
-  text-align: center;
-  margin: 0px;
-  position: relative;
 }
 
-.page-container {
-  margin-top: 60px;
+ .page-container {
+  margin-top: 100px;
 }
 
 a {
@@ -37,19 +33,19 @@ a {
   font-weight: 700;
 }
 
+.navbar {
+  background-color: var(--backgroundColor);
+}
+
 ul {
   background-color: var(--tertiaryColor);
-  list-style-type: none;
-  columns: 3;
   border: 5px solid var(--primaryColor);
-  padding-inline-start: 0px;
-  padding-block: 20px;
   width: 60%;
   margin: 0 auto;
 }
 
-li {
-  margin-top: 10px;
+.list-group-item {
+  background-color: transparent;
 }
 
 .btn {
