@@ -23,18 +23,25 @@ body {
   color: var(--primaryColor);
 }
 
- .page-container {
+.page-container {
   margin-top: 100px;
-}
-
-a {
-  color: var(--primaryColor);
-  font-size: 20px;
-  font-weight: 700;
 }
 
 .navbar {
   background-color: var(--backgroundColor);
+}
+
+.navbar-brand {
+  font-size: 2.25rem;
+}
+
+a {
+  color: var(--primaryColor);
+  font-weight: 700;
+}
+
+a:hover {
+  color: var(--primaryColor);
 }
 
 ul {
@@ -42,6 +49,10 @@ ul {
   border: 5px solid var(--primaryColor);
   width: 60%;
   margin: 0 auto;
+}
+
+.list-group {
+  min-width: 300px;
 }
 
 .list-group-item {
@@ -77,4 +88,12 @@ ul {
 .modal-content {
   background: var(--fourthColor);
   border: 2px solid var(--primaryColor);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--primaryColor);
+}
+
+.modal-footer {
+  border-top: 1px solid var(--primaryColor);
 }
