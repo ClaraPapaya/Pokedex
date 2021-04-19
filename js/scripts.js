@@ -13,9 +13,11 @@ let pokemonRepository = (function() {
   //adds a new pokemon item to the list
   function add(pokemons) {
     if (typeof pokemons === 'object' && 'name' in pokemons) {
-      pokemonList.push(pokemons)
+      pokemonList.push(pokemons);
     } else {
-      console.log("Not the right Pokémon!")
+      /* eslint-disable no-console */
+      console.error("Not the right Pokémon!");
+      /* eslint-enable no-console */
       }
   }
   //creates an unordered list and buttons in the DOM for each Pokémon
