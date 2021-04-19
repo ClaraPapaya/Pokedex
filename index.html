@@ -1,68 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>First JS App</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-<!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
   </head>
 
   <body>
     <header>
-<!-- Bootstrap navigation bar -->
+      <!-- Bootstrap navigation bar -->
       <nav class="navbar fixed-top">
-<!-- App name -->
+        <!-- App name -->
         <a class="navbar-brand" href="#">Pokédex</a>
-<!-- Search bar -->
+        <!-- Search bar -->
         <form id="filter" class="form-inline ml-auto">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn my-2 my-sm-0" type="submit">Search</button>
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn my-2 my-sm-0" type="submit">Search</button>
         </form>
       </nav>
     </header>
-<!-- Loading image -->
+    <!-- Loading image -->
     <div id="loading">
-      <img class="loadingImage" src="img/loading.jpg">
+      <img class="loadingImage" src="img/loading.jpg" alt="Loading Image" />
     </div>
-<!-- Bootstrap modal -->
-    <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Bootstrap modal -->
+    <div
+      class="modal fade"
+      id="modal-container"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modal-container"
+      aria-hidden="true"
+    >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modalTitle"></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <p id="heightDetail"><span class="sr-only">Height of the pokemon</span></p>
-            <p id="typeDetail"><span class="sr-only">Type of the pokemon</span></p>
-            <img id="imgDetail" class="img-fluid" src="#" alt="Image of the pokemon">
+            <p id="heightDetail">
+              <span class="sr-only">Height of the pokemon</span>
+            </p>
+            <p id="typeDetail">
+              <span class="sr-only">Type of the pokemon</span>
+            </p>
+            <img
+              id="imgDetail"
+              class="img-fluid"
+              src="#"
+              alt="Image of the pokemon"
+            />
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn" data-dismiss="modal">Close</button>
+            <button type="button" class="btn" data-dismiss="modal">
+              Close
+            </button>
           </div>
         </div>
       </div>
     </div>
-<!-- Pokemon list -->
-      <div class="container page-container">
-        <ul class="pokemon-list list-group"></ul>
-      </div>
+    <!-- Pokemon list -->
+    <div class="container page-container">
+      <ul class="pokemon-list list-group"></ul>
+    </div>
 
-<!-- Bootstrap JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Bootstrap JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch-polyfill.js"></script>
     <script src="./js/scripts.js"></script>
-
   </body>
-
 </html>

@@ -13,10 +13,12 @@ let pokemonRepository = (function() {
   //adds a new pokemon item to the list
   function add(pokemons) {
     if (typeof pokemons === 'object' && 'name' in pokemons) {
-      pokemonList.push(pokemons)
+      pokemonList.push(pokemons);
     } else {
-      console.log("Not the right Pokémon!")
-      }
+      /* eslint-disable no-console */
+      console.error('Not the right Pokémon!');
+      /* eslint-enable no-console */
+    }
   }
   //creates an unordered list and buttons in the DOM for each Pokémon
   function addListItem(pokemon) {
@@ -42,95 +44,102 @@ let pokemonRepository = (function() {
   //loads the list of Pokémons from the API
   function loadList() {
     showLoadingMessage();
-    return fetch(apiUrl).then(function(response) {
-      return response.json();
-    }).then(function(json) {
-      json.results.forEach(function(item) {
-        let pokemons = {
-          name: item.name,
-          detailsUrl: item.url
-        };
-      add(pokemons);
+    return fetch(apiUrl)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(json) {
+        json.results.forEach(function(item) {
+          let pokemons = {
+            name: item.name,
+            detailsUrl: item.url
+          };
+          add(pokemons);
+        });
+      })
+      .then(function() {
+        hideLoadingMessage();
+      })
+      .catch(function(e) {
+        console.error(e);
       });
-    }).then(function(){
-      hideLoadingMessage();
-    }).catch(function(e) {
-      console.error(e);
-    })
     hideLoadingMessage();
   }
   //loads the details of the Pokémons from the API using fetch
   function loadDetails(item) {
     showLoadingMessage();
     let url = item.detailsUrl;
-    return fetch(url).then(function (response) {
-      return response.json();
-    }).then(function (details) {
-      item.imageUrl = details.sprites.front_default;
-      item.height = details.height;
-      item.types = [];
-      details.types.forEach(function(object) {
-        return item.types.push(object.type.name);
+    return fetch(url)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(details) {
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = [];
+        details.types.forEach(function(object) {
+          return item.types.push(object.type.name);
+        });
+      })
+      .then(function() {
+        hideLoadingMessage();
+      })
+      .catch(function(e) {
+        console.error(e);
       });
-    }).then(function() {
-      hideLoadingMessage();
-    }).catch(function(e) {
-      console.error(e);
-    });
     hideLoadingMessage();
   }
 
   //filter/search function
-  let searchPokemonList = document.querySelector(".pokemon-list");
-  let searchBar = document.forms["filter"].querySelector("input");
-  searchBar.addEventListener("keyup", function(e) {
+  let searchPokemonList = document.querySelector('.pokemon-list');
+  let searchBar = document.forms['filter'].querySelector('input');
+  searchBar.addEventListener('keyup', function(e) {
     let term = e.target.value.toLowerCase();
-    let searchPokemons = searchPokemonList.getElementsByTagName("li");
+    let searchPokemons = searchPokemonList.getElementsByTagName('li');
     Array.from(searchPokemons).forEach(function(searchPokemons) {
-          let poke = searchPokemons.firstElementChild.textContent;
-          if (poke.toLowerCase().indexOf(term) != -1) {
-            searchPokemons.style.display = "block";
-          } else {
-            searchPokemons.style.display = "none";
-          }
-    })
-  })
+      let poke = searchPokemons.firstElementChild.textContent;
+      if (poke.toLowerCase().indexOf(term) != -1) {
+        searchPokemons.style.display = 'block';
+      } else {
+        searchPokemons.style.display = 'none';
+      }
+    });
+  });
 
   //shows the loading image
   function showLoadingMessage() {
-    loadImage = document.querySelector(".loadingImage");
-    loadImage.classList.add("showImg");
+    loadImage = document.querySelector('.loadingImage');
+    loadImage.classList.add('showImg');
   }
 
   //hides the loading image
   function hideLoadingMessage() {
-    loadImage = document.querySelector(".loadingImage");
-    loadImage.classList.remove("showImg");
+    loadImage = document.querySelector('.loadingImage');
+    loadImage.classList.remove('showImg');
   }
 
   //shows the Pokémon details like type, height, etc. fetched from the details url of the API
   function showDetails(pokemon) {
-      loadDetails(pokemon).then(function () {
+    loadDetails(pokemon).then(function() {
       showModal(pokemon);
-      })
-    };
+    });
+  }
 
   //modal that shows the Pokemon listItems details
   function showModal(pokemon) {
-
     //adds the modal content details to modal header and body
-    let modalTitle = document.getElementById("modalTitle");
+    let modalTitle = document.getElementById('modalTitle');
     modalTitle.innerText = pokemon.name;
 
-    let pokemonHeight = document.getElementById("heightDetail");
-    pokemonHeight.innerText = "Height: " + pokemon.height;
-    pokemonHeight.classList.add("modal-body");
+    let pokemonHeight = document.getElementById('heightDetail');
+    pokemonHeight.innerText = 'Height: ' + pokemon.height;
+    pokemonHeight.classList.add('modal-body');
 
-    let pokemonType = document.getElementById("typeDetail");
-    pokemonType.innerText = "Type: " + pokemon.types;
-    pokemonType.classList.add("modal-body");
+    let pokemonType = document.getElementById('typeDetail');
+    pokemonType.innerText = 'Type: ' + pokemon.types;
+    pokemonType.classList.add('modal-body');
 
-    let modalImage = document.getElementById("imgDetail");
+    let modalImage = document.getElementById('imgDetail');
     modalImage.src = pokemon.imageUrl;
   }
 
@@ -140,14 +149,14 @@ let pokemonRepository = (function() {
   }
 
   //to close modal when esc key is pressed
-  window.addEventListener('keydown', (e) => {
+  window.addEventListener('keydown', e => {
     let modalContainer = document.querySelector('#modal-container');
     if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
       hideModal();
     }
   });
 
-  modalContainer.addEventListener('click', (e) => {
+  modalContainer.addEventListener('click', e => {
     let target = e.target;
     if (target === modalContainer) {
       hideModal();
@@ -167,7 +176,7 @@ let pokemonRepository = (function() {
     showModal: showModal,
     hideModal: hideModal
   };
-}());
+})();
 
 //calls and executes the pokemonRepository
 pokemonRepository.loadList().then(function() {
@@ -177,7 +186,7 @@ pokemonRepository.loadList().then(function() {
   setTimeout(function() {
     pokemonRepository.getAll().forEach(function(pokemons) {
       pokemonRepository.addListItem(pokemons);
-    })
+    });
     pokemonRepository.hideLoadingMessage();
-  }, 1000)
+  }, 1000);
 });
