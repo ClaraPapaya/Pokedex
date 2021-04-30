@@ -26,19 +26,25 @@ let pokemonRepository = (function() {
     //creates the list
     let listItem = document.createElement('li');
     listItem.classList.add('list-group-item');
-    //creates the button
+    //creates the button for the list items, including classes and attributes
     let button = document.createElement('button');
+    const buttonClasses = ['btn', 'btn-block'];
     button.innerText = pokemon.name;
-    button.classList.add('btn');
-    button.classList.add('btn-block');
-    button.setAttribute('data-toggle', 'modal');
-    button.setAttribute('data-target', '#modal-container');
+    button.classList.add(...buttonClasses);
+    setElementAttributes(button, {'data-toggle': 'modal', 'data-target': '#modal-container'});
     button.addEventListener('click', function(event) {
       showDetails(pokemon);
     });
     //adds them to the DOM
     listItem.appendChild(button);
     pokemonListUl.appendChild(listItem);
+  }
+
+  //sets the attributes for the list items to open modal
+  function setElementAttributes(element, obj) {
+    for (const [key, value] of Object.entries(obj)) {
+      element.setAttribute(key, value);
+    }
   }
 
   //loads the list of Pokémons from the API
@@ -99,9 +105,9 @@ let pokemonRepository = (function() {
     Array.from(searchPokemons).forEach(function(searchPokemons) {
       let poke = searchPokemons.firstElementChild.textContent;
       if (poke.toLowerCase().indexOf(term) != -1) {
-        searchPokemons.style.display = 'block';
+        searchPokemons.classList.add = 'show-pokemon';
       } else {
-        searchPokemons.style.display = 'none';
+        searchPokemons.classList.remove = 'show-pokemon';
       }
     });
   });
