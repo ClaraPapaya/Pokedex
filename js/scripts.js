@@ -32,7 +32,7 @@ let pokemonRepository = (function() {
     button.innerText = pokemon.name;
     button.classList.add(...buttonClasses);
     setElementAttributes(button, {'data-toggle': 'modal', 'data-target': '#modal-container'});
-    button.addEventListener('click', function(event) {
+    button.addEventListener('click', function() {
       showDetails(pokemon);
     });
     //adds them to the DOM
@@ -69,7 +69,6 @@ let pokemonRepository = (function() {
       .catch(function(e) {
         console.error(e);
       });
-    hideLoadingMessage();
   }
   //loads the details of the Pokémons from the API using fetch
   function loadDetails(item) {
@@ -93,7 +92,6 @@ let pokemonRepository = (function() {
       .catch(function(e) {
         console.error(e);
       });
-    hideLoadingMessage();
   }
 
   //filter/search function
@@ -114,13 +112,13 @@ let pokemonRepository = (function() {
 
   //shows the loading image
   function showLoadingMessage() {
-    loadImage = document.querySelector('.loadingImage');
+    let loadImage = document.querySelector('.loadingImage');
     loadImage.classList.add('showImg');
   }
 
   //hides the loading image
   function hideLoadingMessage() {
-    loadImage = document.querySelector('.loadingImage');
+    let loadImage = document.querySelector('.loadingImage');
     loadImage.classList.remove('showImg');
   }
 
