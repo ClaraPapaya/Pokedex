@@ -85,6 +85,10 @@ ul {
   margin-top: 5%;
 }
 
+.show-pokemon {
+  display: block;
+}
+
 .modal-content {
   background: var(--fourthColor);
   border: 2px solid var(--primaryColor);
