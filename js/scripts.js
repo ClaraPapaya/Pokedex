@@ -96,17 +96,17 @@ let pokemonRepository = (function () {
   }
 
   // Filter/search function
-  let searchPokemonList = document.querySelector('.pokemon-list');
-  let searchBar = document.forms['filter'].querySelector('input');
-  searchBar.addEventListener('keyup', function (e) {
+  let searchPokemonList = document.querySelector(".pokemon-list");
+  let searchBar = document.forms["filter"].querySelector("input");
+  searchBar.addEventListener("keyup", function (e) {
     let term = e.target.value.toLowerCase();
-    let searchPokemons = searchPokemonList.getElementsByTagName('li');
+    let searchPokemons = searchPokemonList.getElementsByTagName("li");
     Array.from(searchPokemons).forEach(function (searchPokemons) {
       let poke = searchPokemons.firstElementChild.textContent;
       if (poke.toLowerCase().indexOf(term) != -1) {
-        searchPokemons.classList.add('show-pokemon');
+        searchPokemons.style.display = "block";
       } else {
-        searchPokemons.classList.remove('show-pokemon');
+        searchPokemons.style.display = "none";
       }
     });
   });
