@@ -9,4 +9,4 @@ HTML5, CSS3, JavaScript ES6, Bootstrap 4.3.1, ESLint
 ## API used:
 https://pokeapi.co/api/v2/pokemon/
 
-### [MIT Licencse] (https://github.com/ClaraPapaya/First-JS-app/blob/main/LICENSE)
+[MIT Licencse](https://github.com/ClaraPapaya/First-JS-app/blob/main/LICENSE)
